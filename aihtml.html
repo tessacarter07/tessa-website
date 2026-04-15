@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joke Generator</title>
+
+<style>
+   body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1f1c2c, #928dab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+    
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 18px;
+        text-align: center;
+        width: 380px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    h1 {
+        margin-bottom: 15px;
+    }
+
+    .joke {
+        font-size: 18px;
+        margin: 20px 0;
+        min-height: 70px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #7b2ff7, #00c6ff);
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    .stars {
+        margin-top: 15px;
+    }
+
+    .star {
+        font-size: 30px;
+        cursor: pointer;
+        color: lightgray;
+        transition: 0.2s;
+    }
+
+    .star:hover,
+    .star.active {
+        color: gold;
+        transform: scale(1.2);
+    }
+
+    .rating-text {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #444;
+    }
+
+    .links {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .links a {
+        display: block;
+        margin: 5px 0;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>😂 Joke Generator</h1>
+
+    <div class="joke" id="joke">Click the button to get a joke!</div>
+
+    <button onclick="generateJoke()">Get Joke</button>
+
+    <div class="stars" id="stars">
+        ⭐⭐⭐⭐⭐
+    </div>
+
+    <div class="rating-text" id="ratingText">Rate this joke!</div>
+
+    <div class="links">
+        <a href="fromscratch.html">⬅ Back to Scratch Page</a>
+        <a href="index.html">🏠 Back to Bootstrap Home</a>
+    </div>
+</div>
+
+<script>
+    const jokes = [
+        "Why don't skeletons fight each other? They don't have the guts.",
+        "Why did the computer go to therapy? It had too many bytes of trauma.",
+        "Why don’t programmers like nature? Too many bugs.",
+        "What do you call fake spaghetti? An impasta.",
+        "Why did the math book look sad? It had too many problems.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field.",
+        "Why can't your nose be 12 inches long? Because then it would be a foot.",
+        "Why did the coffee file a police report? It got mugged.",
+        "Why do cows have hooves instead of feet? Because they lactose.",
+        "Why did the student eat his homework? Because the teacher said it was a piece of cake!"
+    ];
+
+    let currentRating = 0;
+
+    function generateJoke() {
+        const randomIndex = Math.floor(Math.random() * jokes.length);
+        document.getElementById("joke").innerText = jokes[randomIndex];
+
+        currentRating = 0;
+        updateStars(0);
+        document.getElementById("ratingText").innerText = "Rate this joke!";
+    }
+
+    function rateJoke(stars) {
+        currentRating = stars;
+        updateStars(stars);
+        document.getElementById("ratingText").innerText =
+            "You rated this joke " + stars + " star(s) ⭐";
+    }
+
+    function updateStars(stars) {
+        const starContainer = document.getElementById("stars");
+        starContainer.innerHTML = "";
+
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement("span");
+            star.innerHTML = "★";
+            star.classList.add("star");
+
+            if (i <= stars) {
+                star.classList.add("active");
+            }
+
+            star.onclick = () => rateJoke(i);
+
+            starContainer.appendChild(star);
+        }
+    }
+
+    // initialize stars
+    updateStars(0);
+</script>
+
+</body>
+</html>
