@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ebd2e2, #9face6);
+    font-family: Arial, sans-serif;
+    color: #030303;
+
+    /* centers everything */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+.header {
+    background: rgba(241, 231, 235, 0.75);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* SECTION BOXES */
+.section {
+    margin: 20px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 800px;
+
+    text-align: center;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+}
+
+.section:hover {
+    transform: scale(1.02);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 25px;
+    width: 100%;
+    color: white;
+}
+
+/* HEADINGS */
+h1, h2 {
+    font-family: Georgia, serif;
+    text-align: center;
+}
+
+/* LISTS */
+ul, ol {
+    list-style-position: inside;
+    padding: 0;
+    text-align: center;
+}
+
+/* LINKS */
+a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
